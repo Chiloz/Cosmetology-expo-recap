@@ -909,55 +909,6 @@ body {
     transform:translateY(-8px);
 }
 
-.about-badge{
-
-    position:absolute;
-
-    bottom:25px;
-    left:25px;
-
-    background:rgba(255,255,255,.95);
-
-    backdrop-filter:blur(12px);
-
-    padding:18px 22px;
-
-    border-radius:18px;
-
-    display:flex;
-    gap:15px;
-
-    align-items:center;
-
-    box-shadow:0 10px 35px rgba(0,0,0,.15);
-
-    border:1px solid rgba(212,175,55,.25);
-}
-
-.about-badge-number{
-
-    font-size:2rem;
-
-    font-weight:800;
-
-    color:#c79b19;
-
-    font-family: Arial, sans-serif;
-}
-
-.about-badge-label{
-
-    color:#555;
-
-    font-size:.75rem;
-
-    text-transform:uppercase;
-
-    font-weight:700;
-
-    line-height:1.4;
-}
-
 /* =========================
    CONTENT
 ========================= */
