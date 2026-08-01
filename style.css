@@ -1,0 +1,1631 @@
+body {
+   background: #fff;
+   color: #000;
+   font-family: Arial, sans-serif;
+ }
+ /* Logo */
+.navbar-logo {
+  height: 60px; /* Adjust if needed */
+  width: auto;
+  display: block;
+
+  border-radius:15px;
+
+  object-fit: contain; /* prevents stretching */
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* optional nice hover effect */
+.navbar-brand:hover .navbar-logo {
+  transform: scale(1.05);
+}
+
+/* mobile responsiveness */
+@media (max-width: 576px) {
+  .navbar-logo {
+    height: 45px;
+    border-radius: 14px;
+  }
+}
+
+/* Navbar brand */
+.navbar-brand {
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Mobile */
+@media (max-width: 991.98px) {
+  .navbar-logo {
+    height: 50px;
+  }
+}
+ 
+ .navbar .nav-link {
+   color: #f5f1e6;
+   /* soft ivory instead of white */
+   position: relative;
+   transition: all 0.3s ease;
+   letter-spacing: 1px;
+ }
+
+ /* Hover = gold luxury glow */
+ .navbar .nav-link:hover {
+   color: #d4af37;
+   text-shadow:
+     0 0 6px rgba(212, 175, 55, 0.6),
+     0 0 12px rgba(212, 175, 55, 0.5),
+     0 0 20px rgba(212, 175, 55, 0.4);
+   transform: translateY(-2px);
+ }
+
+ /* underline glow (luxury thin line) */
+ .navbar .nav-link::after {
+   content: "";
+   position: absolute;
+   left: 0;
+   bottom: -6px;
+   width: 0%;
+   height: 1px;
+   background: #d4af37;
+   box-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+   transition: 0.3s ease;
+ }
+
+ .navbar .nav-link:hover::after {
+   width: 100%;
+ }
+
+ .navbar {
+   background: rgba(11, 31, 20, 0.85);
+   backdrop-filter: blur(12px);
+   border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+ }
+
+ .pink-btn {
+   background: linear-gradient(135deg, #d4af37, #f5e6a8);
+   color: #0b1f14 !important;
+   border: none;
+   padding: 10px 22px;
+   font-weight: 600;
+   letter-spacing: 1px;
+   border-radius: 30px;
+   box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+   transition: all 0.3s ease;
+   position: relative;
+   overflow: hidden;
+ }
+
+ /* Hover effect */
+ .pink-btn:hover {
+   transform: translateY(-3px);
+   box-shadow: 0 8px 25px rgba(212, 175, 55, 0.45);
+   background: linear-gradient(135deg, #f5e6a8, #d4af37);
+ }
+
+ /* subtle shine animation */
+ .pink-btn::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: -75%;
+   width: 50%;
+   height: 100%;
+   background: rgba(255, 255, 255, 0.25);
+   transform: skewX(-20deg);
+   transition: 0.5s;
+ }
+
+ .pink-btn:hover::before {
+   left: 130%;
+ }
+
+
+
+ /* NAV */
+ .navbar {
+   background: #000;
+ }
+.register-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* =========================
+   ZAMBIA FLAG (GIF)
+   ========================= */
+.zambia-flag {
+  width: 70px;          /* 👈 bigger (you can go 28–40px) */
+  height: auto;
+
+  display: inline-block;
+  vertical-align: middle;
+
+  /* makes it feel more “designed” */
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+
+  /* smooth feel */
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* hover polish */
+.register-wrapper:hover .zambia-flag {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 6px rgba(0, 255, 0, 0.35));
+}
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #0b1f14; /* fallback color while images load */
+}
+
+/* Background slider layers (controlled by JS) */
+.hero-bg-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-bg-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.hero-bg-layer.active {
+  opacity: 1;
+}
+
+/* Dark overlay for text readability */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  z-index: 1;
+}
+
+/* Container sits above bg + overlay */
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================
+   HERO CONTENT
+========================================== */
+
+.hero-content {
+  max-width: 720px;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+/* ==========================================
+   TAG (event label pill)
+========================================== */
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  margin-bottom: 30px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-left: 5px solid #d4af37;
+  border-radius: 50px;
+
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.5;
+
+  width: fit-content;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 20px rgba(212, 175, 55, 0.15);
+
+  transition: all 0.35s ease;
+}
+
+.hero-tag:hover {
+  transform: translateY(-3px);
+  border-color: #d4af37;
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.35),
+    0 0 30px rgba(212, 175, 55, 0.35);
+}
+
+/* ==========================================
+   HEADING AREA
+========================================== */
+
+.hero-heading {
+  border-left: 4px solid rgba(255, 255, 255, 0.75);
+  padding-left: 28px;
+}
+
+.hero-title {
+  margin-bottom: 1.2rem;
+  color: #fff;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  max-width: 550px;
+  text-shadow:
+    0 0 10px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(0, 0, 0, 0.15);
+}
+
+.hero-title span#heroTitle {
+  display: block;
+}
+
+.hero-outline {
+  display: block;
+  color: #d4af37;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.9);
+}
+
+/* ==========================================
+   DESCRIPTION
+========================================== */
+
+.hero-description {
+  width: min(400px, 100%);
+  max-width: 400px;
+  margin-bottom: 2rem;
+
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 700;
+  text-align: left;
+
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+
+/* ==========================================
+   HERO BOTTOM (button + event details)
+========================================== */
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+  margin-top: 45px;
+  flex-wrap: wrap;
+}
+
+/* Button */
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 16px 34px;
+
+  background: linear-gradient(135deg, #d4af37, #f0cf6d);
+  color: #143d2c;
+  text-decoration: none;
+  font-weight: 700;
+
+  border: none;
+  border-radius: 60px;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+.hero-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-4px);
+  color: #143d2c;
+  text-decoration: none;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, #f0cf6d, #d4af37);
+}
+
+.hero-btn:hover::before {
+  left: 130%;
+}
+
+.hero-btn i {
+  transition: transform 0.3s ease;
+}
+
+.hero-btn:hover i {
+  transform: translateX(6px);
+}
+
+/* Event details (venue / date cards) */
+.hero-event-details {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.event-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 14px 22px;
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+}
+
+.event-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #d4af37;
+  color: #143d2c;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.event-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-text small {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.event-text strong {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* ==========================================
+   NAVIGATION DOTS
+========================================== */
+
+.hero-dots {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.hero-dot.active {
+  background: #d4af37;
+  width: 28px;
+  border-radius: 6px;
+}
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+@media (max-width: 992px) {
+  .hero {
+    min-height: auto;
+    padding: 90px 0 50px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding-top: 70px;
+    padding-bottom: 40px;
+  }
+
+  .hero-title {
+    max-width: 100%;
+  }
+
+  .hero-description {
+    width: min(340px, 100%);
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+  .hero {
+    min-height: auto;
+    padding: 90px 0 50px;
+  }
+
+  .hero-content {
+    padding: 0;
+  }
+
+  .hero-heading {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    max-width: 100%;
+  }
+
+  .hero-description {
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .hero-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 260px;
+    justify-content: center;
+  }
+}
+
+/* ==========================================
+   SMALL PHONES
+========================================== */
+
+@media (max-width: 480px) {
+  .hero-tag {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+  }
+
+  .event-card {
+    padding: 10px 16px;
+  }
+
+  .event-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+/* ==========================================
+   HERO SPONSORS SECTION
+========================================== */
+
+.hero-sponsors {
+  margin-top: 28px;
+  text-align: center;
+}
+
+/* title */
+.hero-sponsors-title {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+/* row: SINGLE LINE ON DESKTOP */
+.hero-sponsors-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 22px;
+}
+/*====================================
+ HERO SPONSORS
+=====================================*/
+
+.hero-sponsors {
+  margin-top: 50px;
+}
+
+.hero-sponsors-title {
+  text-align: center;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  opacity: 0.9;
+}
+
+/* Slider */
+
+.hero-sponsors-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 3%,
+    black 97%,
+    transparent
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 3%,
+    black 97%,
+    transparent
+  );
+}
+
+/* Moving Track */
+
+.hero-sponsors-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: sponsorScroll 30s linear infinite;
+}
+
+.hero-sponsors-slider:hover .hero-sponsors-track {
+  animation-play-state: paused;
+}
+
+/* Sponsor Card */
+
+.hero-sponsor {
+  flex: 0 0 auto;
+
+  width: 130px;
+  height: 70px;
+
+  margin: 0 10px;
+  padding: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+
+  transition: all .3s ease;
+}
+
+.hero-sponsor:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.16);
+  border-color: rgba(255,255,255,.25);
+}
+
+/* Logos */
+
+.hero-sponsor img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  transition: transform .3s ease;
+}
+
+.hero-sponsor:hover img {
+  transform: scale(1.06);
+}
+
+/* Infinite Scroll */
+
+@keyframes sponsorScroll {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+
+}
+
+.hero-sponsors {
+    margin-top:50px;
+    width:150%;
+    margin-left:auto;
+    overflow:hidden;
+}
+
+@media(max-width:992px){
+    .hero-sponsors{
+        width:120%;
+    }
+}
+
+@media(max-width:768px){
+    .hero-sponsors{
+        width:100%;
+    }
+}
+/* Tablets */
+
+@media (max-width: 992px) {
+
+  .hero-sponsor {
+    width: 110px;
+    height: 60px;
+    margin: 0 8px;
+  }
+
+  .hero-sponsors-track {
+    animation-duration: 24s;
+  }
+
+}
+
+/* Phones */
+
+@media (max-width: 768px) {
+
+  .hero-sponsor {
+    width: 95px;
+    height: 55px;
+    margin: 0 6px;
+  }
+
+  .hero-sponsors-title {
+    font-size: .85rem;
+  }
+
+  .hero-sponsors-track {
+    animation-duration: 20s;
+  }
+
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-sponsors-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-sponsor img {
+    height: 38px;
+  }
+
+  .hero-sponsors-title {
+    font-size: 0.85rem;
+  }
+}
+
+.hero-heading,
+.countdown-card,
+.hero-sponsors {
+  margin-left: 28px;
+}
+/* ==========================================
+   GLOBAL TEXT FIX
+========================================== */
+
+body {
+  color: #222;
+}
+
+
+/* WHAT YOU'LL EXPERIENCE (shared heading style — still used by
+   the Event Highlights section below) */
+.expo-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #1b4332; /* green */
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.expo-title::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 4px;
+  margin: 12px auto 0;
+  border-radius: 50px;
+  background: linear-gradient(
+    to right,
+    #1b4332,
+    #d4af37,
+    #5a3e1b
+  );
+}
+
+/* PARAGRAPH */
+.expo-subtitle {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #000;
+  font-weight: 400;
+}
+
+/* =========================
+   HOME ABOUT SECTION (LUXURY LIGHT THEME)
+========================= */
+
+.home-about-section {
+  background: linear-gradient(180deg, #fcfbf8 0%, #f7f3eb 100%);
+  padding: 110px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background shapes */
+.home-about-section::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    top:-220px;
+    right:-180px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+        rgba(212,175,55,.12),
+        transparent 70%);
+}
+
+.home-about-section::after{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    bottom:-180px;
+    left:-180px;
+    border-radius:50%;
+    background:radial-gradient(circle,
+        rgba(20,77,53,.05),
+        transparent 70%);
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:70px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+}
+
+/* =========================
+   IMAGE
+========================= */
+
+.about-image-wrap{
+    position:relative;
+}
+
+.about-img{
+    width:100%;
+    aspect-ratio:4/5;
+    object-fit:cover;
+
+    border-radius:24px;
+
+    border:8px solid #fff;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.12),
+        0 8px 20px rgba(0,0,0,.08);
+
+    transition:.4s;
+}
+
+.about-img:hover{
+    transform:translateY(-8px);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+/* Title now matches the styling used by the other section
+   headings across the site (Event Highlights, Where It All
+   Began, Exhibitors in Action) instead of a separate serif
+   badge/button look. Left-aligned to fit the two-column
+   About layout, with the same green/gold gradient underline. */
+.home-about-title{
+
+    font-size:clamp(2rem,3vw,3rem);
+
+    color:#1b4332;
+
+    font-family: Arial, sans-serif;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    line-height:1.2;
+
+    margin-bottom:25px;
+
+    font-weight:800;
+
+    position:relative;
+
+    padding-bottom:18px;
+}
+
+.home-about-title::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:100px;
+
+    height:4px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        to right,
+        #1b4332,
+        #d4af37,
+        #5a3e1b
+    );
+}
+
+.home-about-text{
+
+    color:#666;
+
+    line-height:1.9;
+
+    font-size:1.02rem;
+
+    margin-bottom:18px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.about-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+    margin-top:40px;
+}
+
+.about-stat{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
+}
+
+.about-stat:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.12);
+}
+
+.about-stat i{
+
+    width:60px;
+
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:linear-gradient(135deg,#d4af37,#f3d97c);
+
+    color:white;
+
+    border-radius:50%;
+
+    font-size:1.35rem;
+
+    flex-shrink:0;
+}
+
+.about-stat strong{
+
+    display:block;
+
+    font-size:1.6rem;
+
+    color:#222;
+
+    font-weight:800;
+
+    font-family: Arial, sans-serif;
+}
+
+.about-stat span{
+
+    color:#777;
+
+    font-size:.82rem;
+
+    letter-spacing:.04em;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .about-grid{
+
+        grid-template-columns:1fr;
+
+        gap:60px;
+    }
+
+    .about-image-wrap{
+
+        max-width:430px;
+
+        margin:auto;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .about-stats{
+
+        grid-template-columns:1fr;
+    }
+
+    .about-badge{
+
+        left:15px;
+
+        bottom:15px;
+    }
+
+}
+
+/* =========================
+   ABOUT IMAGE SLIDER
+========================= */
+
+.about-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.about-bg-layer {
+
+  position:absolute;
+
+  inset:0;
+
+  background-size:cover;
+
+  background-position:center;
+
+  background-repeat:no-repeat;
+
+  opacity:0;
+
+  transition:opacity 1s ease-in-out;
+
+}
+
+
+.about-bg-layer.active {
+
+  opacity:1;
+
+}
+
+
+/* keep image frame styling */
+
+.about-image-frame {
+
+  box-shadow:
+  0 25px 60px rgba(0,0,0,.15);
+
+}
+
+
+/* optional dark overlay for luxury feel */
+
+.about-image-frame::after {
+
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+  linear-gradient(
+    180deg,
+    transparent,
+    rgba(0,0,0,.15)
+  );
+
+  pointer-events:none;
+
+}
+
+
+
+
+
+/* =====================================================
+   EVENT HIGHLIGHTS SECTION — SLIDING VERSION
+   Add this to style.css (or link as a separate highlights.css)
+===================================================== */
+
+.highlights-section {
+  background: #f3ede3;
+}
+
+/* ---------- Category block ---------- */
+
+.highlight-category {
+  margin-bottom: 60px;
+}
+
+.highlight-category:last-of-type {
+  margin-bottom: 20px;
+}
+
+.highlight-category-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.highlight-category-header h3 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1b4332;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.highlight-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4af37, #f0cf6d);
+  color: #143d2c;
+  font-size: 1.25rem;
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+}
+
+/* ---------- Big sliding showcase ---------- */
+
+.highlight-slider {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.highlight-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.highlight-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 1s ease, transform 6s ease;
+  z-index: 0;
+}
+
+.highlight-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+.highlight-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Gold ring treatment for Awards */
+.award-slider {
+  border: 4px solid #d4af37;
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.35);
+}
+
+/* ---------- Arrows ---------- */
+
+.highlight-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d4af37;
+  color: #143d2c;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 5;
+}
+
+.highlight-arrow:hover {
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+}
+
+.highlight-arrow.prev {
+  left: 16px;
+}
+
+.highlight-arrow.next {
+  right: 16px;
+}
+
+/* ---------- Dots ---------- */
+
+.highlight-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 9px;
+  z-index: 5;
+}
+
+.highlight-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.highlight-dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.highlight-dot.active {
+  background: #d4af37;
+  width: 26px;
+  border-radius: 6px;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 992px) {
+  .highlight-slider {
+    height: 440px;
+  }
+}
+
+@media (max-width: 768px) {
+  .highlight-slider {
+    height: 340px;
+    border-radius: 15px;
+  }
+
+  .highlight-category-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .highlight-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.05rem;
+  }
+
+  .highlight-category {
+    margin-bottom: 45px;
+  }
+
+  .highlight-arrow {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .highlight-slider {
+    height: 260px;
+    border-radius: 12px;
+  }
+
+  .highlight-dots {
+    bottom: 12px;
+  }
+
+  .highlight-arrow.prev {
+    left: 10px;
+  }
+
+  .highlight-arrow.next {
+    right: 10px;
+  }
+}
+
+/* =====================================================
+   OPENING CEREMONY & EXHIBITOR STANDS — PHOTO SLIDER
+   Shared component, themed to match the gold/green
+   luxury palette used across the rest of the site.
+===================================================== */
+
+.content-section {
+  padding: 90px 0;
+  background: #fff;
+  color: #111;
+}
+
+.content-section.alt-bg {
+  background: #f3ede3;
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 45px;
+}
+
+
+.section-heading h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #1b4332;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-heading h2::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 4px;
+  margin: 12px auto 0;
+  border-radius: 50px;
+  background: linear-gradient(to right, #1b4332, #d4af37, #5a3e1b);
+}
+
+.section-heading p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333;
+  margin: 0;
+}
+
+.photo-slider {
+  position: relative;
+  width: 100%;
+  height: 560px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0b1f14;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.slider-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.slider-slide.active {
+  opacity: 1;
+}
+
+.slider-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #d4af37;
+  color: #143d2c;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.9rem;
+
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 2;
+}
+
+.slider-arrow:hover {
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+}
+
+.slider-arrow.prev {
+  left: 16px;
+}
+
+.slider-arrow.next {
+  right: 16px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+  z-index: 2;
+}
+
+.slider-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dots .dot:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.slider-dots .dot.active {
+  background: #d4af37;
+  width: 26px;
+  border-radius: 6px;
+}
+
+@media (max-width: 992px) {
+  .photo-slider {
+    height: 440px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-section {
+    padding: 60px 0;
+  }
+
+  .photo-slider {
+    height: 340px;
+    border-radius: 15px;
+  }
+
+  .slider-arrow {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-slider {
+    height: 260px;
+    border-radius: 12px;
+  }
+
+  .slider-dots {
+    bottom: 12px;
+  }
+}
+
+/* =====================================================
+   VIEW FULL GALLERY — LABEL + TWO-LINK BUTTON GROUP
+===================================================== */
+
+.gallery-label {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #1b4332;
+  margin-bottom: 22px;
+}
+
+.gallery-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Outline variant so the second button reads as
+   "the other half" of the gallery, not a lesser option */
+.hero-btn-outline {
+  background: transparent;
+  color: #1b4332;
+  border: 2px solid #1b4332;
+  box-shadow: none;
+}
+
+.hero-btn-outline:hover {
+  background: #1b4332;
+  color: #fff;
+}
+
+.hero-btn-outline::before {
+  background: rgba(27, 67, 50, 0.12);
+}
+
+@media (max-width: 480px) {
+  .gallery-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .gallery-links .hero-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}
