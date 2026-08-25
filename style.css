@@ -1663,21 +1663,14 @@ body {
   flex-shrink: 0;
 }
 
-/* ---------- Partner slider (continuous ticker) ---------- */
+/* ---------- Partner slider (continuous, automatic — pure CSS,
+   same technique as .hero-sponsors-track) ---------- */
 
 .partner-slider {
   position: relative;
   width: 100%;
   margin-top: 10px;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  cursor: grab;
-
-  /* hide native scrollbar across browsers, drag/swipe still works */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  overflow: hidden;
 
   /* fade the edges so cards appear to drift in/out rather than
      cut off abruptly */
@@ -1697,20 +1690,23 @@ body {
   );
 }
 
-.partner-slider::-webkit-scrollbar {
-  display: none;
-}
-
-.partner-slider:active {
-  cursor: grabbing;
-}
-
 .partner-track {
   display: flex;
+  align-items: stretch;
   gap: 26px;
   width: max-content;
   padding: 6px 4px 26px;
-  user-select: none;
+
+  animation: partnerScroll 45s linear infinite;
+}
+
+@keyframes partnerScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* ---------- Partner card ---------- */
