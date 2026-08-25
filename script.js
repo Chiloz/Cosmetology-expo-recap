@@ -314,7 +314,105 @@
   }
 
   // ============================================
-  // 5. ABOUT SECTION — STAT COUNT-UP ON SCROLL
+  // 6. COMMUNITY PARTNERS — CONTINUOUS TICKER
+  //    Slow, non-stop horizontal auto-scroll (the
+  //    content is duplicated once in the markup so
+  //    the loop point is seamless). Dragging,
+  //    swiping, or using a trackpad/wheel takes over
+  //    manual control instantly; the ticker resumes
+  //    a moment after the person lets go.
+  // ============================================
+  const partnerSlider = document.getElementById("partnerSlider");
+  const partnerTrack = document.getElementById("partnerTrack");
+
+  if (partnerSlider && partnerTrack) {
+    const TICKER_SPEED = 0.45; // px per frame — slow, headline-style crawl
+    const RESUME_DELAY = 900; // ms of stillness before auto-scroll resumes
+
+    let isInteracting = false;
+    let resumeTimer = null;
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+
+    function halfWidth() {
+      return partnerTrack.scrollWidth / 2;
+    }
+
+    function wrapIfNeeded() {
+      const half = halfWidth();
+      if (!half) return;
+      if (partnerSlider.scrollLeft >= half) {
+        partnerSlider.scrollLeft -= half;
+        dragStartScroll -= half;
+      } else if (partnerSlider.scrollLeft < 0) {
+        partnerSlider.scrollLeft += half;
+        dragStartScroll += half;
+      }
+    }
+
+    function tick() {
+      if (!isInteracting && !reduceMotion) {
+        partnerSlider.scrollLeft += TICKER_SPEED;
+      }
+      wrapIfNeeded();
+      requestAnimationFrame(tick);
+    }
+
+    function pauseTicker() {
+      isInteracting = true;
+      clearTimeout(resumeTimer);
+    }
+
+    function scheduleResume() {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        isInteracting = false;
+      }, RESUME_DELAY);
+    }
+
+    // Pointer drag (covers mouse AND touch/pen — one API for all three)
+    partnerSlider.addEventListener("pointerdown", (e) => {
+      pauseTicker();
+      dragStartX = e.clientX;
+      dragStartScroll = partnerSlider.scrollLeft;
+      try {
+        partnerSlider.setPointerCapture(e.pointerId);
+      } catch (err) {
+        /* pointer capture not supported — dragging still works via
+           the pointermove listener below, just without capture */
+      }
+    });
+
+    partnerSlider.addEventListener("pointermove", (e) => {
+      if (!isInteracting) return;
+      partnerSlider.scrollLeft = dragStartScroll - (e.clientX - dragStartX);
+    });
+
+    ["pointerup", "pointercancel", "pointerleave"].forEach((evt) => {
+      partnerSlider.addEventListener(evt, scheduleResume);
+    });
+
+    // Trackpad / mouse-wheel horizontal scroll only — a plain vertical
+    // wheel scroll that merely passes over this section (e.g. the
+    // cursor resting here while the page scrolls) must NOT pause the
+    // ticker, or it would stall every time someone scrolls the page.
+    partnerSlider.addEventListener(
+      "wheel",
+      (e) => {
+        if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+        pauseTicker();
+        scheduleResume();
+      },
+      { passive: true }
+    );
+
+    // Reduced-motion users still get full manual drag/scroll — only
+    // the automatic crawl is skipped, per this site's motion policy.
+    requestAnimationFrame(tick);
+  }
+
+  // ============================================
+  // 7. ABOUT SECTION — STAT COUNT-UP ON SCROLL
   // ============================================
   const statEls = document.querySelectorAll(".about-stat strong[data-count]");
   if (statEls.length) {
