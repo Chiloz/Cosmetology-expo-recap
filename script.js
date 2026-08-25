@@ -351,7 +351,7 @@
     }
 
     function tick() {
-      if (!isInteracting && !reduceMotion) {
+      if (!isInteracting) {
         partnerSlider.scrollLeft += TICKER_SPEED;
       }
       wrapIfNeeded();
@@ -406,8 +406,10 @@
       { passive: true }
     );
 
-    // Reduced-motion users still get full manual drag/scroll — only
-    // the automatic crawl is skipped, per this site's motion policy.
+    // This ticker keeps crawling regardless of the OS "reduce motion"
+    // setting (unlike the other slideshows on this page) because it's
+    // a slow, linear scroll the person can stop with a touch or drag
+    // at any moment — not an autoplay carousel they're stuck watching.
     requestAnimationFrame(tick);
   }
 
